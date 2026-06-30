@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座运势测试</title>
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 30%, #16213e 60%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #e0d5c0;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #c4b5fd;
+            margin-bottom: 2rem;
+        }
+        
+        .date-selector {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .date-selector input {
+            background: rgba(30, 27, 75, 0.8);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            color: #e0d5c0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+        }
+        
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .zodiac-btn {
+            background: rgba(30, 27, 75, 0.6);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            color: #e0d5c0;
+            padding: 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .zodiac-btn:hover, .zodiac-btn.selected {
+            border-color: #a78bfa;
+            background: rgba(139, 92, 246, 0.3);
+        }
+        
+        .query-btn {
+            display: block;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+            border: none;
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        
+        .result {
+            display: none;
+            margin-top: 2rem;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .result-header h3 {
+            color: #c4b5fd;
+            font-size: 1.5rem;
+        }
+        
+        .lucky-details {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .lucky-details span {
+            background: rgba(139, 92, 246, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .luck-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .luck-card {
+            background: rgba(26, 10, 46, 0.7);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 2px solid;
+        }
+        
+        .luck-card.good {
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+        
+        .luck-card.avoid {
+            border-color: rgba(239, 68, 68, 0.6);
+        }
+        
+        .luck-card.tips {
+            border-color: rgba(139, 92, 246, 0.6);
+            grid-column: 1 / -1;
+        }
+        
+        .luck-card h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .luck-card.good h4 {
+            color: #4ade80;
+        }
+        
+        .luck-card.avoid h4 {
+            color: #f87171;
+        }
+        
+        .luck-card.tips h4 {
+            color: #a78bfa;
+        }
+        
+        .luck-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .luck-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
+        .luck-card li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⭐ 星座运势测试 ⭐</h1>
+        
+        <div class="date-selector">
+            <input type="date" id="horoscope-date">
+        </div>
+        
+        <div class="zodiac-grid">
+            <button class="zodiac-btn" onclick="selectZodiac('aries')">♈ 白羊座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('taurus')">♉ 金牛座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('gemini')">♊ 双子座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('cancer')">♋ 巨蟹座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('leo')">♌ 狮子座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('virgo')">♍ 处女座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('libra')">♎ 天秤座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('scorpio')">♏ 天蝎座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('sagittarius')">♐ 射手座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('capricorn')">♑ 摩羯座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('aquarius')">♒ 水瓶座</button>
+            <button class="zodiac-btn" onclick="selectZodiac('pisces')">♓ 双鱼座</button>
+        </div>
+        
+        <button class="query-btn" onclick="queryHoroscope()">查询运势</button>
+        
+        <div class="result" id="result">
+            <div class="result-header" id="result-header"></div>
+            <div class="luck-content" id="luck-content"></div>
+            <button class="query-btn" onclick="reset()">重新查询</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedZodiac = null;
+        
+        const zodiacData = {
+            aries: { name: '白羊座', symbol: '♈' },
+            taurus: { name: '金牛座', symbol: '♉' },
+            gemini: { name: '双子座', symbol: '♊' },
+            cancer: { name: '巨蟹座', symbol: '♋' },
+            leo: { name: '狮子座', symbol: '♌' },
+            virgo: { name: '处女座', symbol: '♍' },
+            libra: { name: '天秤座', symbol: '♎' },
+            scorpio: { name: '天蝎座', symbol: '♏' },
+            sagittarius: { name: '射手座', symbol: '♐' },
+            capricorn: { name: '摩羯座', symbol: '♑' },
+            aquarius: { name: '水瓶座', symbol: '♒' },
+            pisces: { name: '双鱼座', symbol: '♓' }
+        };
+        
+        const goodActivities = [
+            { activity: '开展新项目或计划', keywords: ['all'] },
+            { activity: '处理财务事务', keywords: ['taurus', 'virgo', 'capricorn'] },
+            { activity: '社交活动和人际交流', keywords: ['gemini', 'libra', 'aquarius'] },
+            { activity: '表达情感，说出心声', keywords: ['cancer', 'scorpio', 'pisces'] },
+            { activity: '展现领导才能', keywords: ['aries', 'leo', 'sagittarius'] },
+            { activity: '学习新技能或知识', keywords: ['all'] },
+            { activity: '进行创意创作', keywords: ['leo', 'aquarius', 'pisces'] },
+            { activity: '整理房间和工作环境', keywords: ['taurus', 'virgo', 'capricorn'] },
+            { activity: '运动锻炼身体', keywords: ['aries', 'leo', 'sagittarius'] },
+            { activity: '冥想和内省', keywords: ['cancer', 'scorpio', 'pisces'] },
+            { activity: '大胆表白或示爱', keywords: ['aries', 'leo', 'sagittarius'] },
+            { activity: '与朋友聚会', keywords: ['gemini', 'libra', 'aquarius'] },
+            { activity: '签订合同或协议', keywords: ['taurus', 'libra', 'capricorn'] },
+            { activity: '处理家庭事务', keywords: ['cancer', 'capricorn'] },
+            { activity: '规划未来的目标', keywords: ['all'] },
+            { activity: '尝试新鲜事物', keywords: ['aries', 'gemini', 'sagittarius'] },
+            { activity: '维护现有关系', keywords: ['libra', 'scorpio', 'pisces'] },
+            { activity: '投资理财', keywords: ['taurus', 'cancer', 'capricorn'] },
+            { activity: '旅行或短途出行', keywords: ['sagittarius', 'aquarius'] },
+            { activity: '艺术创作或欣赏', keywords: ['leo', 'pisces', 'aquarius'] }
+        ];
+        
+        const badActivities = [
+            { activity: '做重大财务决策', keywords: ['taurus', 'virgo', 'capricorn'] },
+            { activity: '冲动消费或购物', keywords: ['aries', 'leo', 'sagittarius'] },
+            { activity: '激烈的争论或冲突', keywords: ['cancer', 'libra', 'pisces'] },
+            { activity: '隐瞒重要信息', keywords: ['scorpio', 'sagittarius'] },
+            { activity: '冒险投机行为', keywords: ['taurus', 'virgo', 'capricorn'] },
+            { activity: '过度承诺或说大话', keywords: ['aries', 'leo', 'sagittarius'] },
+            { activity: '逃避问题或拖延', keywords: ['all'] },
+            { activity: '忽视身体健康', keywords: ['all'] },
+            { activity: '过度依赖他人意见', keywords: ['aquarius', 'aries'] },
+            { activity: '做出草率的决定', keywords: ['gemini', 'sagittarius', 'pisces'] },
+            { activity: '斤斤计较', keywords: ['leo', 'libra', 'aquarius'] },
+            { activity: '过度敏感或情绪化', keywords: ['cancer', 'scorpio', 'pisces'] },
+            { activity: '单打独斗不求助', keywords: ['libra', 'capricorn'] },
+            { activity: '忽视家人和朋友', keywords: ['cancer', 'leo'] },
+            { activity: '固执己见不听劝告', keywords: ['taurus', 'leo', 'sagittarius'] },
+            { activity: '过于追求完美', keywords: ['virgo', 'capricorn'] },
+            { activity: '参与复杂的人际关系', keywords: ['gemini', 'libra'] },
+            { activity: '隐瞒真实感受', keywords: ['cancer', 'scorpio', 'pisces'] },
+            { activity: '急于求成', keywords: ['taurus', 'virgo', 'capricorn'] },
+            { activity: '独断专行', keywords: ['libra', 'aquarius'] }
+        ];
+        
+        function generateLuck(zodiac, date) {
+            const dateNum = parseInt(date.replace(/-/g, ''));
+            const zodiacNum = zodiac.charCodeAt(0);
+            const seed = dateNum + zodiacNum;
+            
+            const random = (max) => Math.floor((seed * 9301 + 49297) % 233280) / 233280 * max;
+            
+            const allGoodItems = goodActivities.filter(item => 
+                item.keywords.includes('all') || item.keywords.includes(zodiac)
+            );
+            
+            const allBadItems = badActivities.filter(item => 
+                item.keywords.includes('all') || item.keywords.includes(zodiac)
+            );
+            
+            const goodItemsToUse = allGoodItems.length > 0 ? allGoodItems : goodActivities.filter(item => item.keywords.includes('all'));
+            const badItemsToUse = allBadItems.length > 0 ? allBadItems : badActivities.filter(item => item.keywords.includes('all'));
+            
+            const goodCount = 4 + Math.floor(random(3));
+            const goodItems = getRandomItems(goodItemsToUse, Math.min(goodCount, Math.max(goodItemsToUse.length, 4)));
+            
+            const badCount = 4 + Math.floor(random(3));
+            const badItems = getRandomItems(badItemsToUse, Math.min(badCount, Math.max(badItemsToUse.length, 4)));
+            
+            return { good: goodItems, avoid: badItems };
+        }
+        
+        function getRandomItems(arr, count) {
+            const shuffled = [...arr].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, Math.min(count, arr.length));
+        }
+        
+        function selectZodiac(zodiac) {
+            document.querySelectorAll('.zodiac-btn').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+            selectedZodiac = zodiac;
+        }
+        
+        function queryHoroscope() {
+            const date = document.getElementById('horoscope-date').value;
+            
+            if (!date) {
+                alert('请选择日期');
+                return;
+            }
+            
+            if (!selectedZodiac) {
+                alert('请选择星座');
+                return;
+            }
+            
+            const luck = generateLuck(selectedZodiac, date);
+            const luckyInfo = getLuckyInfo(selectedZodiac, date);
+            
+            const dateObj = new Date(date);
+            const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+            const formattedDate = `${dateObj.getMonth() + 1}月${dateObj.getDate()}日 星期${weekdays[dateObj.getDay()]}`;
+            
+            document.getElementById('result-header').innerHTML = `
+                <h3>${zodiacData[selectedZodiac].symbol} ${zodiacData[selectedZodiac].name} - ${formattedDate}</h3>
+                <div class="lucky-details">
+                    <span>幸运数字: ${luckyInfo.luckyNumber}</span>
+                    <span>幸运方位: ${luckyInfo.luckyDirection}</span>
+                    <span>幸运颜色: ${luckyInfo.luckyColor}</span>
+                </div>
+            `;
+            
+            document.getElementById('luck-content').innerHTML = `
+                <div class="luck-card good">
+                    <h4>✅ 宜做的事</h4>
+                    <ul>${luck.good.map(item => `<li>${item.activity}</li>`).join('')}</ul>
+                </div>
+                <div class="luck-card avoid">
+                    <h4>❌ 忌做的事</h4>
+                    <ul>${luck.avoid.map(item => `<li>${item.activity}</li>`).join('')}</ul>
+                </div>
+                <div class="luck-card tips">
+                    <h4>💡 今日小贴士</h4>
+                    <p>${luckyInfo.tip}</p>
+                </div>
+            `;
+            
+            document.getElementById('result').style.display = 'block';
+        }
+        
+        function getLuckyInfo(zodiac, date) {
+            const dateNum = parseInt(date.replace(/-/g, ''));
+            const zodiacNum = zodiac.charCodeAt(0);
+            const seed = dateNum + zodiacNum;
+            
+            const luckyNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+            const directions = ['东方', '西方', '南方', '北方', '东南', '东北', '西南', '西北'];
+            const colors = ['红色', '橙色', '黄色', '绿色', '蓝色', '紫色', '粉色', '金色', '银色', '白色', '黑色'];
+            
+            const tips = {
+                fire: '今日火象星座运势较旺，适合展现个人魅力，积极主动地推进计划。',
+                earth: '今日土象星座运势平稳，适合处理务实的事务，稳扎稳打会有收获。',
+                air: '今日风象星座运势活跃，适合社交和沟通，创意想法会不断涌现。',
+                water: '今日水象星座运势敏感，适合处理情感事务，直觉力会有所增强。'
+            };
+            
+            const elements = {
+                aries: 'fire', leo: 'fire', sagittarius: 'fire',
+                taurus: 'earth', virgo: 'earth', capricorn: 'earth',
+                gemini: 'air', libra: 'air', aquarius: 'air',
+                cancer: 'water', scorpio: 'water', pisces: 'water'
+            };
+            
+            return {
+                luckyNumber: luckyNumbers[seed % luckyNumbers.length],
+                luckyDirection: directions[seed % directions.length],
+                luckyColor: colors[seed % colors.length],
+                tip: tips[elements[zodiac]] || tips.fire
+            };
+        }
+        
+        function reset() {
+            selectedZodiac = null;
+            document.querySelectorAll('.zodiac-btn').forEach(btn => btn.classList.remove('selected'));
+            document.getElementById('result').style.display = 'none';
+        }
+        
+        // 设置默认日期
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            document.getElementById('horoscope-date').value = today.toISOString().split('T')[0];
+        });
+    </script>
+</body>
+</html>

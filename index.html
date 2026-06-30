@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>塔罗占卜 - 命运之轮</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 开屏动画 -->
+    <div id="introAnimation" class="intro-animation">
+        <div class="intro-stars"></div>
+        <div class="meteor-container">
+            <div class="meteor meteor-1"></div>
+            <div class="meteor meteor-2"></div>
+            <div class="meteor meteor-3"></div>
+            <div class="meteor meteor-small meteor-4"></div>
+            <div class="meteor meteor-small meteor-5"></div>
+            <div class="meteor meteor-small meteor-6"></div>
+            <div class="meteor meteor-small meteor-7"></div>
+        </div>
+        <div class="intro-content">
+            <div class="intro-logo">🔮</div>
+            <h1 class="intro-title">命运之轮塔罗</h1>
+            <p class="intro-subtitle">愿你找到内心的答案</p>
+        </div>
+    </div>
+
+    <!-- 功能介绍页面 -->
+    <div id="featureIntro" class="feature-intro">
+        <div class="feature-intro-stars"></div>
+        <div class="feature-intro-content">
+            <div class="feature-intro-header">
+                <span class="feature-icon">✨</span>
+                <h2 class="feature-title">网站功能</h2>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item" data-delay="0">
+                    <div class="feature-item-header">
+                        <div class="feature-item-icon">🔮</div>
+                        <div class="feature-item-title">
+                            <h3>塔罗占卜</h3>
+                            <p>选择经典牌阵，聆听内心声音，获得命运的指引</p>
+                        </div>
+                        <div class="feature-item-arrow">▼</div>
+                    </div>
+                    <div class="feature-item-detail">
+                        <div class="detail-content">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎴</span>
+                                <div>
+                                    <h4>多种牌阵</h4>
+                                    <p>圣三角、时间流、凯尔特十字等经典牌阵</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🔍</span>
+                                <div>
+                                    <h4>深度解读</h4>
+                                    <p>结合牌义与你的问题，给出个性化解读</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">�</span>
+                                <div>
+                                    <h4>定制音乐</h4>
+                                    <p>根据你的语音音色和语速BPM定制专属占卜音乐</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">�🎯</span>
+                                <div>
+                                    <h4>主题分析</h4>
+                                    <p>爱情、事业、财富等多维度主题指引</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item" data-delay="1">
+                    <div class="feature-item-header">
+                        <div class="feature-item-icon">⭐</div>
+                        <div class="feature-item-title">
+                            <h3>星座运势</h3>
+                            <p>探索十二星座的神秘指引，洞悉今日运势</p>
+                        </div>
+                        <div class="feature-item-arrow">▼</div>
+                    </div>
+                    <div class="feature-item-detail">
+                        <div class="detail-content">
+                            <div class="detail-item">
+                                <span class="detail-icon">♈♉♊</span>
+                                <div>
+                                    <h4>十二星座</h4>
+                                    <p>火象、土象、风象、水象四象星座全解析</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📅</span>
+                                <div>
+                                    <h4>每日运势</h4>
+                                    <p>综合运势、爱情、事业、财富四维解读</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🎶</span>
+                                <div>
+                                    <h4>星座音乐</h4>
+                                    <p>为每个星座定制专属运势音乐</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item" data-delay="2">
+                    <div class="feature-item-header">
+                        <div class="feature-item-icon">📔</div>
+                        <div class="feature-item-title">
+                            <h3>占卜笔记本</h3>
+                            <p>记录每一次占卜的心路历程，保存珍贵的洞察</p>
+                        </div>
+                        <div class="feature-item-arrow">▼</div>
+                    </div>
+                    <div class="feature-item-detail">
+                        <div class="detail-content">
+                            <div class="detail-item">
+                                <span class="detail-icon">📝</span>
+                                <div>
+                                    <h4>完整记录</h4>
+                                    <p>保存占卜问题、牌面、解读和心得</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🗓️</span>
+                                <div>
+                                    <h4>日历视图</h4>
+                                    <p>按日期浏览占卜记录，追踪成长轨迹</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">💾</span>
+                                <div>
+                                    <h4>本地存储</h4>
+                                    <p>数据安全保存在本地，隐私有保障</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-item" data-delay="3">
+                    <div class="feature-item-header">
+                        <div class="feature-item-icon">🎵</div>
+                        <div class="feature-item-title">
+                            <h3>音乐指引</h3>
+                            <p>根据你的选择，播放专属的背景音乐，营造沉浸氛围</p>
+                        </div>
+                        <div class="feature-item-arrow">▼</div>
+                    </div>
+                    <div class="feature-item-detail">
+                        <div class="detail-content">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎤</span>
+                                <div>
+                                    <h4>语音定制</h4>
+                                    <p>根据你的语音音色和语速定制专属音乐</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">💭</span>
+                                <div>
+                                    <h4>情绪匹配</h4>
+                                    <p>识别情绪状态，推荐最契合的音乐</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🎚️</span>
+                                <div>
+                                    <h4>BPM调节</h4>
+                                    <p>智能调节音乐节奏，与你同频共振</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-intro-footer">
+                <button class="feature-enter-btn" id="feature-enter-btn">
+                    <span>开启神秘之旅</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 星空背景层 -->
+    <div class="starry-background">
+        <!-- 星轨效果 -->
+        <div class="star-trails"></div>
+        
+        <!-- 星点 -->
+        <div class="stars">
+            <div class="star large" style="top: 8%; left: 12%; --duration: 2.5s;"></div>
+            <div class="star" style="top: 15%; left: 25%; --duration: 3.5s;"></div>
+            <div class="star" style="top: 5%; left: 45%; --duration: 2.8s;"></div>
+            <div class="star large" style="top: 20%; left: 70%; --duration: 4s;"></div>
+            <div class="star" style="top: 12%; left: 85%; --duration: 3s;"></div>
+            <div class="star" style="top: 35%; left: 8%; --duration: 3.2s;"></div>
+            <div class="star large" style="top: 45%; left: 18%; --duration: 2.7s;"></div>
+            <div class="star" style="top: 30%; left: 92%; --duration: 3.8s;"></div>
+            <div class="star" style="top: 55%; left: 5%; --duration: 2.9s;"></div>
+            <div class="star" style="top: 65%; left: 88%; --duration: 3.3s;"></div>
+            <div class="star large" style="top: 75%; left: 15%; --duration: 4.2s;"></div>
+            <div class="star" style="top: 70%; left: 35%; --duration: 3.1s;"></div>
+            <div class="star" style="top: 80%; left: 75%; --duration: 2.6s;"></div>
+            <div class="star" style="top: 85%; left: 55%; --duration: 3.6s;"></div>
+            <div class="star large" style="top: 90%; left: 92%; --duration: 3.4s;"></div>
+        </div>
+        
+        <!-- 星云粒子 -->
+        <div class="nebula-particles">
+            <div class="nebula"></div>
+            <div class="nebula"></div>
+            <div class="nebula"></div>
+        </div>
+        
+        <!-- 漂浮星尘 -->
+        <div class="dust-particles">
+            <div class="dust" style="left: 10%; animation-duration: 25s; --drift-x: 80px;"></div>
+            <div class="dust" style="left: 25%; animation-duration: 30s; --drift-x: -60px; animation-delay: -5s;"></div>
+            <div class="dust" style="left: 40%; animation-duration: 28s; --drift-x: 100px; animation-delay: -10s;"></div>
+            <div class="dust" style="left: 55%; animation-duration: 32s; --drift-x: -90px; animation-delay: -15s;"></div>
+            <div class="dust" style="left: 70%; animation-duration: 26s; --drift-x: 70px; animation-delay: -8s;"></div>
+            <div class="dust" style="left: 85%; animation-duration: 29s; --drift-x: -80px; animation-delay: -12s;"></div>
+        </div>
+    </div>
+    
+    <!-- 暗角效果 -->
+    <div class="vignette"></div>
+    
+    <!-- 羊皮纸纹理覆盖层 -->
+    <div class="parchment-overlay"></div>
+    
+    <!-- 磨砂丝绒纹理 -->
+    <div class="velvet-texture"></div>
+    
+    <!-- 原有背景层 -->
+    <div class="background-overlay"></div>
+    
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop preload="none">
+        <source src="月夜花海.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- 音乐控制面板 -->
+    <div class="bg-music-panel">
+        <button id="bgMusicBtn" class="bg-music-btn" title="背景音乐">
+            <span class="music-icon">🎵</span>
+        </button>
+        <div class="volume-slider-container">
+            <span class="volume-label">🔊</span>
+            <input type="range" id="bgVolumeSlider" class="volume-slider" min="0" max="100" value="20">
+            <span id="volumeValue" class="volume-value">20%</span>
+        </div>
+    </div>
+    
+    <!-- 头部 -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">🔮</span>
+            <h1>命运之轮</h1>
+        </div>
+        <p class="subtitle">塔罗占卜 · 音乐指引</p>
+    </header>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 导航标签 -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="tarot" onclick="switchTab('tarot')">
+                <span class="tab-icon">🔮</span>
+                <span class="tab-label">塔罗占卜</span>
+            </button>
+            <button class="tab-btn" data-tab="horoscope" onclick="switchTab('horoscope')">
+                <span class="tab-icon">⭐</span>
+                <span class="tab-label">星座运势</span>
+            </button>
+            <button class="tab-btn" data-tab="notebook" onclick="switchTab('notebook')">
+                <span class="tab-icon">📔</span>
+                <span class="tab-label">占卜笔记本</span>
+            </button>
+        </nav>
+
+        <!-- 塔罗占卜界面 -->
+        <section class="content-section" id="tarot-section">
+            <!-- 占卜区域 -->
+            <section class="reading-section">
+                <h2>选择占卜方式</h2>
+                <div class="spread-options">
+                    <button class="spread-btn active" data-spread="three-card">三牌占卜</button>
+                    <button class="spread-btn" data-spread="celtic-cross">凯尔特十字</button>
+                </div>
+                
+                <div class="question-input">
+                    <label for="question">请描述你的问题（语音输入）</label>
+                    <!-- 语音输入按钮 -->
+                    <div class="voice-input-container">
+                        <button class="voice-btn" id="voice-btn" title="点击开始语音输入">
+                            <span class="voice-icon">🎤</span>
+                        </button>
+                        <span class="voice-status" id="voice-status">点击麦克风开始语音输入</span>
+                    </div>
+                    <!-- 问题输入框（支持语音转文字和手动输入） -->
+                    <input type="text" id="question" placeholder="语音识别结果将显示在这里..." />
+                </div>
+                
+                <button class="shuffle-btn" id="shuffle-btn">
+                    <span class="btn-icon">🎴</span>
+                    开始占卜
+                </button>
+            </section>
+
+            <!-- 牌阵展示区域 -->
+            <section class="cards-section" id="cards-section">
+                <div class="spread-container" id="spread-container">
+                    <!-- 塔罗牌将动态生成在此处 -->
+                </div>
+                <div class="card-meanings" id="card-meanings">
+                    <!-- 牌的含义将动态生成在此处 -->
+                </div>
+            </section>
+
+            <!-- 整体解读区域 -->
+            <section class="summary-section" id="summary-section">
+                <h2>🔮 整体解读</h2>
+                <div class="summary-content" id="summary-content">
+                    <!-- 整体解读将动态生成在此处 -->
+                </div>
+            </section>
+
+            <!-- 音乐推荐区域 -->
+            <section class="music-section" id="music-section">
+                <h2>🎵 为你推荐的音乐</h2>
+                <div class="music-player" id="music-player">
+                    <!-- 音乐播放器将动态生成在此处 -->
+                </div>
+            </section>
+
+            <!-- 再来一次按钮 -->
+            <section class="action-section">
+                <button class="shuffle-btn" id="restart-btn">
+                    <span class="btn-icon">🔄</span>
+                    再来一次
+                </button>
+                <!-- 保存到笔记本按钮 -->
+                <button class="save-note-btn" id="save-to-notebook-btn" style="display: none;" onclick="saveCurrentReading()">
+                    <span class="btn-icon">📝</span>
+                    保存到占卜笔记本
+                </button>
+            </section>
+        </section>
+
+        <!-- 星座运势界面 -->
+        <section class="content-section" id="horoscope-section" style="display: none;">
+            <h2 class="section-title">⭐ 星座每日运势 ⭐</h2>
+            <p class="section-subtitle">探索星座的神秘指引</p>
+            
+            <!-- 日期选择 -->
+            <div class="horoscope-date-selector">
+                <label for="horoscope-date">选择日期</label>
+                <input type="date" id="horoscope-date" class="horoscope-date-input">
+            </div>
+            
+            <!-- 星座选择 -->
+            <div class="zodiac-grid">
+                <button class="zodiac-btn" data-zodiac="aries" onclick="selectZodiac('aries')">
+                    <span class="zodiac-symbol">♈</span>
+                    <span class="zodiac-name">白羊座</span>
+                    <span class="zodiac-period">3.21-4.19</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="taurus" onclick="selectZodiac('taurus')">
+                    <span class="zodiac-symbol">♉</span>
+                    <span class="zodiac-name">金牛座</span>
+                    <span class="zodiac-period">4.20-5.20</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="gemini" onclick="selectZodiac('gemini')">
+                    <span class="zodiac-symbol">♊</span>
+                    <span class="zodiac-name">双子座</span>
+                    <span class="zodiac-period">5.21-6.21</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="cancer" onclick="selectZodiac('cancer')">
+                    <span class="zodiac-symbol">♋</span>
+                    <span class="zodiac-name">巨蟹座</span>
+                    <span class="zodiac-period">6.22-7.22</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="leo" onclick="selectZodiac('leo')">
+                    <span class="zodiac-symbol">♌</span>
+                    <span class="zodiac-name">狮子座</span>
+                    <span class="zodiac-period">7.23-8.22</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="virgo" onclick="selectZodiac('virgo')">
+                    <span class="zodiac-symbol">♍</span>
+                    <span class="zodiac-name">处女座</span>
+                    <span class="zodiac-period">8.23-9.22</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="libra" onclick="selectZodiac('libra')">
+                    <span class="zodiac-symbol">♎</span>
+                    <span class="zodiac-name">天秤座</span>
+                    <span class="zodiac-period">9.23-10.23</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="scorpio" onclick="selectZodiac('scorpio')">
+                    <span class="zodiac-symbol">♏</span>
+                    <span class="zodiac-name">天蝎座</span>
+                    <span class="zodiac-period">10.24-11.22</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="sagittarius" onclick="selectZodiac('sagittarius')">
+                    <span class="zodiac-symbol">♐</span>
+                    <span class="zodiac-name">射手座</span>
+                    <span class="zodiac-period">11.23-12.21</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="capricorn" onclick="selectZodiac('capricorn')">
+                    <span class="zodiac-symbol">♑</span>
+                    <span class="zodiac-name">摩羯座</span>
+                    <span class="zodiac-period">12.22-1.19</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="aquarius" onclick="selectZodiac('aquarius')">
+                    <span class="zodiac-symbol">♒</span>
+                    <span class="zodiac-name">水瓶座</span>
+                    <span class="zodiac-period">1.20-2.18</span>
+                </button>
+                <button class="zodiac-btn" data-zodiac="pisces" onclick="selectZodiac('pisces')">
+                    <span class="zodiac-symbol">♓</span>
+                    <span class="zodiac-name">双鱼座</span>
+                    <span class="zodiac-period">2.19-3.20</span>
+                </button>
+            </div>
+            
+            <!-- 查询按钮 -->
+            <button class="shuffle-btn" id="horoscope-query-btn" onclick="queryHoroscope()">
+                <span class="btn-icon">✨</span>
+                查询今日运势
+            </button>
+            
+            <!-- 运势结果 -->
+            <div class="horoscope-result" id="horoscope-result" style="display: none;">
+                <div class="horoscope-result-header" id="horoscope-result-header"></div>
+                <div class="luck-content" id="luck-content"></div>
+                <!-- 音乐推荐区域 -->
+                <div class="horoscope-music" id="horoscope-music"></div>
+                <!-- 查询其他按钮 -->
+                <div class="reset-button-container">
+                    <button class="shuffle-btn" onclick="resetHoroscope()">
+                        <span class="btn-icon">🔄</span>
+                        查询其他日期/星座
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 占卜笔记本界面 -->
+        <section class="content-section" id="notebook-section" style="display: none;">
+            <h2 class="section-title">📔 占卜笔记本 📔</h2>
+            <p class="section-subtitle">记录你的占卜旅程与心情</p>
+            
+            <!-- 日历视图 -->
+            <div class="notebook-calendar">
+                <div class="calendar-header">
+                    <button class="calendar-nav-btn" onclick="prevMonth()">◀</button>
+                    <span class="calendar-month" id="calendar-month"></span>
+                    <button class="calendar-nav-btn" onclick="nextMonth()">▶</button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- 日历格子将动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 选中日期的记录详情 -->
+            <div class="notebook-records" id="notebook-records" style="display: none;">
+                <div class="records-header">
+                    <span class="records-date" id="records-date"></span>
+                    <span class="records-count" id="records-count"></span>
+                </div>
+                <div class="records-list" id="records-list">
+                    <!-- 记录列表将动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 空状态提示 -->
+            <div class="notebook-empty" id="notebook-empty">
+                <div class="empty-icon">📖</div>
+                <p>还没有任何记录</p>
+                <p class="empty-tip">完成占卜后，点击"保存本次占卜到笔记本"</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>命运之轮塔罗 · 愿你找到内心的答案</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

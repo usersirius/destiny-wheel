@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频测试</title>
+</head>
+<body>
+    <h1>音频测试页面</h1>
+    <button onclick="testAudio()">测试音频播放</button>
+    <div id="result"></div>
+    
+    <script>
+        function testAudio() {
+            const testUrls = [
+                'https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3',
+                'https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav',
+                'https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav'
+            ];
+            
+            let results = [];
+            
+            testUrls.forEach((url, index) => {
+                const audio = new Audio(url);
+                audio.volume = 0.5;
+                
+                audio.play().then(() => {
+                    results.push(`✅ 音频 ${index + 1} 播放成功: ${url}`);
+                    audio.pause();
+                    updateResults();
+                }).catch(error => {
+                    results.push(`❌ 音频 ${index + 1} 播放失败: ${error.message}`);
+                    updateResults();
+                });
+            });
+            
+            function updateResults() {
+                document.getElementById('result').innerHTML = results.map(r => `<p>${r}</p>`).join('');
+            }
+        }
+    </script>
+</body>
+</html>
